@@ -62,10 +62,8 @@ class _AddPageState extends State<AddPage> {
               lastDate: DateTime(2100),
               dateLabelText: 'Date',
               onChanged: (val) {
-                print(val.toString());
                 setState(() {
                   date = val.toString();
-                  print(date);
                 });
               },
             ),

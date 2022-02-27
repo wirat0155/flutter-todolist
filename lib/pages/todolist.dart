@@ -122,6 +122,36 @@ class _TodolistState extends State<Todolist> {
     }
   }
 
+  List<Widget> getTask(List task, String titleColor) {
+    List<Widget> data = [];
+    for (var i = 0; i < task.length; i++) {
+      data.add(Card(
+          child: ListTile(
+              leading: const FlutterLogo(),
+              title: Text(task[i]["title"],
+                  style: (titleColor == "red")
+                      ? const TextStyle(color: Colors.red)
+                      : const TextStyle(color: Colors.black)),
+              subtitle: Text(convertDate(task[i]["date"])),
+              trailing: const Icon(Icons.more_vert),
+              onTap: () {
+                Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                        builder: (context) => UpdatePage(
+                            task[i]["id"],
+                            task[i]["title"],
+                            task[i]["detail"],
+                            task[i]["date"]))).then((context) {
+                  setState(() {
+                    getData();
+                  });
+                });
+              })));
+    }
+    return data;
+  }
+
   String convertDate(date) {
     List<String> months = [
       "Jan",
@@ -147,146 +177,38 @@ class _TodolistState extends State<Todolist> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: const Text('All Task'),
-      ),
+      appBar: AppBar(title: const Text('All Task'), actions: [
+        IconButton(
+            onPressed: () {
+              getData();
+            },
+            icon: const Icon(
+              Icons.refresh,
+            ))
+      ]),
       body: Padding(
-        padding: const EdgeInsets.all(12.0),
-        child: ListView(
-          shrinkWrap: true,
-          children: [
-            const Text("Overdue", style: TextStyle(fontSize: 22, fontWeight: FontWeight.bold),),
-            Center(child: Padding(
-              padding: const EdgeInsets.all(4.0),
-              child: Text(has_overdue_task, style: TextStyle(fontSize: 16, color: Colors.grey[600]),),
-            )),
-            ListView.builder(
-                shrinkWrap: true,
-                itemCount: _overdue_tasks.length,
-                itemBuilder: (context, index) {
-                  return Card(
-                      child: ListTile(
-                    leading: const FlutterLogo(),
-                    title: Text(_overdue_tasks[index]["title"]),
-                    subtitle:
-                        Text(convertDate(_overdue_tasks[index]["date"])),
-                    trailing: const Icon(Icons.more_vert),
-                    onTap: () {
-                      Navigator.push(
-                              context,
-                              MaterialPageRoute(
-                                  builder: (context) => UpdatePage(
-                                      _overdue_tasks[index]["id"],
-                                      _overdue_tasks[index]["title"],
-                                      _overdue_tasks[index]["detail"],
-                                      _overdue_tasks[index]["date"])))
-                          .then((context) {
-                        setState(() {
-                          getData();
-                        });
-                      });
-                    },
-                  ));
-                }),
-            const Text("Today", style: TextStyle(fontSize: 22, fontWeight: FontWeight.bold),),
-            Center(child: Padding(
-              padding: const EdgeInsets.all(4.0),
-              child: Text(has_today_task, style: TextStyle(fontSize: 16, color: Colors.grey[600]),),
-            )),
-            ListView.builder(
-                shrinkWrap: true,
-                itemCount: _today_tasks.length,
-                itemBuilder: (context, index) {
-                  return Card(
-                      child: ListTile(
-                    leading: const FlutterLogo(),
-                    title: Text(_today_tasks[index]["title"]),
-                    subtitle: Text(convertDate(_today_tasks[index]["date"])),
-                    trailing: const Icon(Icons.more_vert),
-                    onTap: () {
-                      Navigator.push(
-                              context,
-                              MaterialPageRoute(
-                                  builder: (context) => UpdatePage(
-                                      _today_tasks[index]["id"],
-                                      _today_tasks[index]["title"],
-                                      _today_tasks[index]["detail"],
-                                      _today_tasks[index]["date"])))
-                          .then((context) {
-                        setState(() {
-                          getData();
-                        });
-                      });
-                    },
-                  ));
-                }),
-            const Text("Tomorrow", style: TextStyle(fontSize: 22, fontWeight: FontWeight.bold),),
-            Center(child: Padding(
-              padding: const EdgeInsets.all(4.0),
-              child: Text(has_tomorrow_task, style: TextStyle(fontSize: 16, color: Colors.grey[600]),),
-            )),
-            ListView.builder(
-                shrinkWrap: true,
-                itemCount: _tomorrow_tasks.length,
-                itemBuilder: (context, index) {
-                  return Card(
-                      child: ListTile(
-                    leading: const FlutterLogo(),
-                    title: Text(_tomorrow_tasks[index]["title"]),
-                    subtitle:
-                        Text(convertDate(_tomorrow_tasks[index]["date"])),
-                    trailing: const Icon(Icons.more_vert),
-                    onTap: () {
-                      Navigator.push(
-                              context,
-                              MaterialPageRoute(
-                                  builder: (context) => UpdatePage(
-                                      _tomorrow_tasks[index]["id"],
-                                      _tomorrow_tasks[index]["title"],
-                                      _tomorrow_tasks[index]["detail"],
-                                      _tomorrow_tasks[index]["date"])))
-                          .then((context) {
-                        setState(() {
-                          getData();
-                        });
-                      });
-                    },
-                  ));
-                }),
-            const Text("Later", style: TextStyle(fontSize: 22, fontWeight: FontWeight.bold),),
-            Center(child: Padding(
-              padding: const EdgeInsets.all(4.0),
-              child: Text(has_future_task, style: TextStyle(fontSize: 16, color: Colors.grey[600]),),
-            )),
-            ListView.builder(
-                shrinkWrap: true,
-                itemCount: _future_tasks.length,
-                itemBuilder: (context, index) {
-                  return Card(
-                      child: ListTile(
-                    leading: const FlutterLogo(),
-                    title: Text(_future_tasks[index]["title"]),
-                    subtitle: Text(convertDate(_future_tasks[index]["date"])),
-                    trailing: const Icon(Icons.more_vert),
-                    onTap: () {
-                      Navigator.push(
-                              context,
-                              MaterialPageRoute(
-                                  builder: (context) => UpdatePage(
-                                      _future_tasks[index]["id"],
-                                      _future_tasks[index]["title"],
-                                      _future_tasks[index]["detail"],
-                                      _future_tasks[index]["date"])))
-                          .then((context) {
-                        setState(() {
-                          getData();
-                        });
-                      });
-                    },
-                  ));
-                }),
-          ],
-        ),
+        padding: const EdgeInsets.all(8.0),
+        child: ListView(children: [
+          // Overdue Tasks
+          getHeading("Overdue"),
+          getCenterSubtitle(has_overdue_task),
+          Column(children: getTask(_overdue_tasks, "red")),
+
+          // Today Tasks
+          getHeading("Today"),
+          getCenterSubtitle(has_today_task),
+          Column(children: getTask(_today_tasks, "black")),
+
+          // Tomorrow Tasks
+          getHeading("Tomorrow"),
+          getCenterSubtitle(has_tomorrow_task),
+          Column(children: getTask(_tomorrow_tasks, "black")),
+
+          // Future Tasks
+          getHeading("Later"),
+          getCenterSubtitle(has_future_task),
+          Column(children: getTask(_future_tasks, "black")),
+        ]),
       ),
       floatingActionButton: FloatingActionButton(
         onPressed: () {
@@ -301,5 +223,28 @@ class _TodolistState extends State<Todolist> {
         child: const Icon(Icons.add),
       ),
     );
+  }
+}
+
+Widget getHeading(string) {
+  return Padding(
+    padding: const EdgeInsets.all(8.0),
+    child: Text(string,
+        style: const TextStyle(fontSize: 22, fontWeight: FontWeight.bold)),
+  );
+}
+
+Widget getCenterSubtitle(string) {
+  if (string == "") {
+    return Container();
+  } else {
+    return Center(
+        child: Padding(
+      padding: const EdgeInsets.all(4.0),
+      child: Text(
+        string,
+        style: TextStyle(fontSize: 16, color: Colors.grey[600]),
+      ),
+    ));
   }
 }

@@ -40,12 +40,12 @@ class _UpdatePageState extends State<UpdatePage> {
     return Scaffold(
       appBar: AppBar(title: const Text("Edit Task"), actions: [
         IconButton(
-            onPressed: () {
-              _showMyDialog(context, _id);
-            },
-            icon: const Icon(
-              Icons.delete,
-            ))
+          onPressed: () {
+            _showMyDialog(context, _id);
+          },
+          icon: const Icon(
+            Icons.delete,
+          ))
       ]),
       body: Padding(
         padding: const EdgeInsets.all(20),
@@ -80,7 +80,6 @@ class _UpdatePageState extends State<UpdatePage> {
               lastDate: DateTime(2100),
               dateLabelText: 'Date',
               onChanged: (val) {
-                print(val.toString());
                 setState(() {
                   _date = val.toString();
                 });
@@ -117,26 +116,25 @@ Future<void> _showMyDialog(context, _id) async {
     barrierDismissible: false, // user must tap button!
     builder: (BuildContext context) {
       return AlertDialog(
-        title: Text('Confirm to Delete ?'),
+        title: const Text('Confirm to Delete ?'),
         content: SingleChildScrollView(
           child: Column(
-            children: <Widget>[
-              const Text('Do you really want to delete this todo? This process cannot be undone'),
+            children: const <Widget>[
+              Text('Do you really want to delete this todo? This process cannot be undone'),
             ],
           ),
         ),
         actions: <Widget>[
           TextButton(
-            child: const Text('Confirm', style: const TextStyle(color: Colors.white)),
+            child: const Text('Confirm', style: TextStyle(color: Colors.white)),
             style: ButtonStyle(backgroundColor: MaterialStateProperty.all(Colors.red)),
             onPressed: () {
-              print("Delete ID $_id");
               deleteTodo(_id).then((value) => Navigator.pop(context));
               Navigator.of(context).pop();
             },
           ),
           TextButton(
-            child: const Text('Cancel', style: const TextStyle(color: Colors.white)),
+            child: const Text('Cancel', style: TextStyle(color: Colors.white)),
             style: ButtonStyle(backgroundColor: MaterialStateProperty.all(Colors.grey)),
             onPressed: () {
               Navigator.of(context).pop();
