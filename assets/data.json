@@ -1,0 +1,26 @@
+[
+    {
+        "title": "Asus",
+        "subtitle": "ASUS is to graphics cards what Nvidia is to GPUs — the highest performance available as long as you have the money to spring for one.",
+        "image_url": "https://www.tech21century.com/wp-content/uploads/2021/11/2021-11-01-19_25_50-Graphics-Cards-All-series%EF%BD%9CASUS-USA.jpg",
+        "detail": "They do a capably job of squeezing every ounce of power out of the GPUs they use, and they always come equipped with serious cooling to match that heat. \n\nYou can always pick up an overclocked card from ASUS with confidence that it will perform. \n\nThe Republic of Gamers (ROG) line represents the peak gaming performance and comes in three models."
+    },
+    {
+        "title": "eVGA",
+        "subtitle": "eVGA is known for having the best customer service in the business and a warranty that remains valid even if you've overclocked your card.",
+        "image_url": "https://www.tech21century.com/wp-content/uploads/2021/11/2021-11-01-19_27_31-EVGA-Products-EVGA-GeForce-RTX-3080-FTW3-ULTRA-HYBRID-GAMING-10G-P5-3898-KL.jpg",
+        "detail": "But that's not to demean the quality of their work. eVGA cards aren't always the prettiest, but they're consistent workhorses that match other top shelf performers in terms of value to efficiency. \n\nWhile eVGA has focused their attention exclusively on Nvidia GPUs since their inception, they've recently expanded to begin working with the latest Navi-powered processors from AMD as well."
+    },
+    {
+        "title": "MSI",
+        "subtitle": "Whether they're working with a Nvidia or AMD GPU, you can always count on MSI to make the most of the hardware.",
+        "image_url": "https://www.tech21century.com/wp-content/uploads/2021/11/2021-11-01-19_29_29-Graphics-Cards-_-MSI-Global.jpg",
+        "detail": "MSI consumers will live and die by the durability and performance of MSI cards, and it's hard to argue against their consistency through the years. \n\nBut the ace up MSI's sleeve is definitely the Afterburner software. It's widely regarded as the best overclocking software on the market, and it provides you with a surprising amount of different variables to tinker with when you're trying to squeeze every last inch of use out of your GPU"
+    },
+    {
+        "title": "Zotac",
+        "subtitle": "ZOTAC cards won't be going toe to toe with a name like eVGA in terms of raw performance",
+        "image_url": "https://www.tech21century.com/wp-content/uploads/2021/11/2021-11-01-19_36_09-ZOTAC-_-Mini-PCs-and-GeForce-RTX-Gaming-Graphics-Cards-_-ZOTAC.jpg",
+        "detail": "Despite not being that well known, ZOTAC represents one of the best budget choices available to you — and that's especially important if you're looking for a decently priced Nvidia card, as the company has a comparatively limited number of partners when compared to AMD. Their catalog is extensive too, offering nearly a hundred different models to reflect the huge number of Nvidia chips they work with."
+    }
+]
